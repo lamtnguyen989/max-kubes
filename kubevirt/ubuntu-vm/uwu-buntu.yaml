@@ -1,0 +1,80 @@
+apiVersion: cdi.kubevirt.io/v1beta1
+kind: DataVolume
+metadata:
+  name: ubuntu-iso
+  namespace: virtual-machines
+spec:
+  source:
+    http:
+      url: "https://releases.ubuntu.com/24.04/ubuntu-24.04.1-desktop-amd64.iso"
+  pvc:
+    accessModes:
+      - ReadWriteOnce
+    resources:
+      requests:
+        storage: 7Gi
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: uwu-buntu-pvc
+  namespace: virtual-machines
+spec:
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 256Gi
+---
+apiVersion: kubevirt.io/v1
+kind: VirtualMachine
+metadata:
+  name: uwu-buntu-vm
+  namespace: virtual-machines
+spec:
+  running: false
+  template:
+    metadata:
+      labels:
+        kubevirt.io/vm: uwu-buntu-vm
+    spec:
+      domain:
+        devices:
+          disks:
+          - name: ubuntu-iso
+            cdrom:
+              bus: virtio
+            bootOrder: 1
+          - name: harddisk
+            disk:
+              bus: virtio
+            bootOrder: 2
+          - name: cloudinitdisk
+            disk:
+              bus: virtio
+          interfaces:
+          - name: default
+            masquerade: {}
+        machine:
+          type: ""
+        resources:
+          requests:
+            memory: 16Gi
+            cpu: 4
+      networks:
+      - name: default
+        pod: {}
+      volumes:
+      - name: ubuntu-iso
+        dataVolume:
+          name: ubuntu-iso
+      - name: harddisk
+        persistentVolumeClaim:
+          claimName: uwu-buntu-pvc
+      - name: cloudinitdisk
+        cloudInitNoCloud:
+          userData: |
+            #cloud-config
+            package_update: true
+            packages:
+              - curl

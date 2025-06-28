@@ -6,6 +6,7 @@ echo $VERSION
 
 # Apply the operator file
 kubectl apply -f https://github.com/kubevirt/kubevirt/releases/download/${VERSION}/kubevirt-operator.yaml
+kubectl apply -f https://github.com/kubevirt/kubevirt/releases/download/$VERSION/kubevirt-cr.yaml
 
 # Installing virtctl
 kubectl krew install virt
