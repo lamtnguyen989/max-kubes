@@ -43,7 +43,7 @@ spec:
           disks:
           - name: ubuntu-iso
             cdrom:
-              bus: virtio
+              bus: sata
             bootOrder: 1
           - name: harddisk
             disk:
