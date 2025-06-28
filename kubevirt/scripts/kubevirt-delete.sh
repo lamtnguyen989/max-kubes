@@ -9,3 +9,11 @@ kubectl delete -f https://github.com/kubevirt/kubevirt/releases/download/$VERSIO
 # Deleting the Kubevirt-related CRDs
 MATCH_STRING="kubevirt"
 kubectl get crds -oname | grep "$MATCH_STRING" | xargs kubectl delete
+
+###     A few considerations to make if the uninstallation hangs    ###
+# kubectl patch crd/kubevirts.kubevirt.io -p '{"metadata":{"finalizers":[]}}' --type=merge
+# kubectl delete crd kubevirts.kubevirt.io
+# kubectl get namespace kubevirt -o json > kubevirt.json 
+# vim the kubevirt.json and empty the finalizer (specifically CHANGE finalizer: ["kubernetes"] ----> finalizer: [])
+# kubectl replace --raw "/api/v1/namespaces/kubevirt/finalize" -f ./kubevirt.json
+# kubectl delete ns kubevirt
