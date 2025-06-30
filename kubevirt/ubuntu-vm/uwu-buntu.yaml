@@ -10,7 +10,6 @@ spec:
   pvc:
     accessModes:
       - ReadWriteOnce
-    storageClassName: standard
     resources:
       requests:
         storage: 7Gi
@@ -23,7 +22,6 @@ metadata:
 spec:
   accessModes:
     - ReadWriteOnce
-  storageClassName: standard
   resources:
     requests:
       storage: 256Gi
