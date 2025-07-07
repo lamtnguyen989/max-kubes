@@ -1,20 +1,3 @@
-apiVersion: cdi.kubevirt.io/v1beta1
-kind: DataVolume
-metadata:
-  name: ubuntu-iso
-  namespace: virtual-machines
-spec:
-  source:
-    http:
-      url: "https://releases.ubuntu.com/24.04/ubuntu-24.04-desktop-amd64.iso"
-  pvc:
-    accessModes:
-      - ReadWriteOnce
-    storageClassName: longhorn
-    resources:
-      requests:
-        storage: 7Gi
----
 apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
@@ -43,7 +26,7 @@ spec:
       domain:
         devices:
           disks:
-          - name: ubuntu-iso
+          - name: ubuntu-desktop-24.04-dv
             cdrom:
               bus: sata
             bootOrder: 1
@@ -67,9 +50,9 @@ spec:
       - name: default
         pod: {}
       volumes:
-      - name: ubuntu-iso
+      - name: ubuntu-desktop-24.04-dv
         dataVolume:
-          name: ubuntu-iso
+          name: ubuntu-desktop-24.04-dv
       - name: harddisk
         persistentVolumeClaim:
           claimName: uwu-buntu-pvc
