@@ -1,0 +1,15 @@
+apiVersion: cdi.kubevirt.io/v1beta1
+kind: DataVolume
+metadata:
+  name: ubuntu-desktop-dv
+spec:
+  source:
+    http:
+      url: "https://releases.ubuntu.com/24.04/ubuntu-24.04-desktop-amd64.iso"
+  pvc:
+    accessModes:
+      - ReadWriteOnce
+    resources:
+      requests:
+        storage: 10Gi
+    storageClassName: longhorn
