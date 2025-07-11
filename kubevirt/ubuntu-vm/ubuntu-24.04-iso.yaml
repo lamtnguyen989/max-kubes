@@ -1,7 +1,7 @@
 apiVersion: cdi.kubevirt.io/v1beta1
 kind: DataVolume
 metadata:
-  name: ubuntu-desktop-24.04-dv
+  name: ubuntu-desktop-24-04-dv
   namespace: virtual-machines
 spec:
   source:

@@ -26,7 +26,7 @@ spec:
       domain:
         devices:
           disks:
-          - name: ubuntu-desktop-24.04-dv
+          - name: ubuntu-desktop-24-04-dv
             cdrom:
               bus: sata
             bootOrder: 1
@@ -50,9 +50,9 @@ spec:
       - name: default
         pod: {}
       volumes:
-      - name: ubuntu-desktop-24.04-dv
+      - name: ubuntu-desktop-24-04-dv
         dataVolume:
-          name: ubuntu-desktop-24.04-dv
+          name: ubuntu-desktop-24-04-dv
       - name: harddisk
         persistentVolumeClaim:
           claimName: uwu-buntu-pvc
