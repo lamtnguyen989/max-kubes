@@ -32,11 +32,11 @@ spec:
           - name: ubuntu-desktop-24-04-dv
             cdrom:
               bus: sata
-            bootOrder: 1
+            bootOrder: 2
           - name: harddisk
             disk:
               bus: virtio
-            bootOrder: 2
+            bootOrder: 1
           - name: cloudinitdisk
             disk:
               bus: virtio
