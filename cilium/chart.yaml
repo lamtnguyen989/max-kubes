@@ -1,0 +1,11 @@
+# Metadata for deploying cilium with ArgoCD (obtained from command: helm show chart cilium/cilium)
+apiVersion: argoproj.io/v1alpha1
+name: cilium
+version: 1.18.1
+description: Cilium for CNI
+type: application
+
+dependencies:
+  - name: cilium  # Internal helm chart name
+    version: 1.18.1
+    repository: "https://helm.cilium.io/"  
