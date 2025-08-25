@@ -4,7 +4,6 @@ name: cilium
 version: 1.18.1
 description: Cilium for CNI
 type: application
-
 dependencies:
   - name: cilium  # Internal helm chart name
     version: 1.18.1
