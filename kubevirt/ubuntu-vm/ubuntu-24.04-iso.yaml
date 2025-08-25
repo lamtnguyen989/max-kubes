@@ -6,7 +6,7 @@ metadata:
 spec:
   source:
     http:
-      url: "https://mirror.pilotfiber.com/ubuntu-iso/24.04.2/ubuntu-24.04.2-desktop-amd64.iso"
+      url: "https://mirror.pilotfiber.com/ubuntu-iso/24.04.3/ubuntu-24.04.3-desktop-amd64.iso"
   pvc:
     accessModes:
       - ReadWriteOnce
