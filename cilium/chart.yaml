@@ -1,5 +1,5 @@
 # Metadata for deploying cilium with ArgoCD (obtained from command: helm show chart cilium/cilium)
-apiVersion: argoproj.io/v1alpha1
+apiVersion: v2
 name: cilium
 version: 1.18.1
 description: Cilium for CNI
