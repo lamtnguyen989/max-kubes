@@ -1,0 +1,48 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: cilium
+  namespace: argocd
+spec:
+  project: default
+  destination:
+    namespace: kube-system
+    server: https://kubernetes.default.svc
+  sources:
+    - repoURL: https://helm.cilium.io/
+      targetRevision: 1.18.1
+      chart: cilium
+      helm: 
+        valueFiles:
+          - $values/cilium/values.yaml
+    - path: cilium
+      repoURL: git@github.com:lamtnguyen989/max-kubes.git
+      targetRevision: HEAD
+      ref: values
+      directory:
+        recurse: true
+        exclude: values.yaml
+  syncPolicy:
+    syncOptions:
+      - ServerSideApply=true
+      - RespectIgnoreDifferences=true
+  ignoreDifferences: # Ignore differences to potentially resolve ArgoCD deployments. https://docs.cilium.io/en/latest/configuration/argocd-issues/
+  - group: ""
+    kind: ConfigMap
+    name: hubble-ca-cert
+    jsonPointers:
+    - /data/ca.crt
+  - group: ""
+    kind: Secret
+    name: hubble-relay-client-certs
+    jsonPointers:
+    - /data/ca.crt
+    - /data/tls.crt
+    - /data/tls.key
+  - group: ""
+    kind: Secret
+    name: hubble-server-certs
+    jsonPointers:
+    - /data/ca.crt
+    - /data/tls.crt
+    - /data/tls.keys
