@@ -5,9 +5,9 @@ cgroup:
   hostRoot: /sys/fs/cgroup
 hubble:
   relay:
-    enabled: true
+    enabled: false
   ui:
-    enabled: true
+    enabled: false
 ipam:
   mode: kubernetes
 k8sServiceHost: localhost
