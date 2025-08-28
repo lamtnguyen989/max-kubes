@@ -3,14 +3,14 @@ cgroup:
     enabled: false
   hostRoot: /sys/fs/cgroup
 
-hubble:
+hubble: # Tech debt (make sure that this is enabled and working)
   relay:
     enabled: false
   ui:
     enabled: false
 
-ipv6:
-  enabled: true
+ipv6: # Tech debt (make sure that this is enabled and working)
+  enabled: false
 
 ipam:
   mode: kubernetes
