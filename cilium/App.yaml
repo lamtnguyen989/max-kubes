@@ -14,11 +14,11 @@ spec:
       chart: cilium
       helm: 
         valueFiles:
-          - $values/cilium/values.yaml
+          - $path/cilium/values.yaml
     - path: cilium
       repoURL: git@github.com:lamtnguyen989/max-kubes.git
       targetRevision: HEAD
-      ref: values
+      ref: path
       directory:
         recurse: true
         exclude: values.yaml
