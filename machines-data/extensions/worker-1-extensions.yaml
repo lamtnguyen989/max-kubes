@@ -1,4 +1,4 @@
-# schematic ID: 63cbc4d934b6fc264e04f80dab1fae41e93f4a203df0752bb46574c0580bb07f
+# schematic ID: 857e6cb9e2157c12e09e68bcbcfc8e10991127446c380dcfc72927652fd0cdad
 customization:
     systemExtensions:
         officialExtensions:
@@ -6,6 +6,5 @@ customization:
             - siderolabs/iscsi-tools
             - siderolabs/nonfree-kmod-nvidia-production
             - siderolabs/nvidia-container-toolkit-production
-            - siderolabs/nvidia-fabricmanager-production
             - siderolabs/nvme-cli
             - siderolabs/util-linux-tools
