@@ -13,15 +13,9 @@ spec:
       repoURL: https://charts.longhorn.io/
       targetRevision: v1.9.1 # Replace with the Longhorn version you'd like to install or upgrade to
       helm:
-        valueFiles:
-          - $path/values.yaml
-    - repoURL: git@github.com:lamtnguyen989/max-kubes.git
-      path: longhorn-system
-      targetRevision: HEAD
-      ref: path
-      directory:
-        recurse: true
-        exclude: values.yaml
+        values: |
+          preUpgradeChecker:
+            jobEnabled: false
   destination:
     server: https://kubernetes.default.svc
     namespace: longhorn-system
