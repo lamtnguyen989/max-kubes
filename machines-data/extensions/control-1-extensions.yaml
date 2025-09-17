@@ -1,0 +1,8 @@
+# schematic ID is: 1aff1d57713216c1b4401c683db64f71fdab1e3c62edc3feb96e840c41002bd9
+customization:
+    systemExtensions:
+        officialExtensions:
+            - siderolabs/intel-ucode
+            - siderolabs/iscsi-tools
+            - siderolabs/nvme-cli
+            - siderolabs/util-linux-tools
