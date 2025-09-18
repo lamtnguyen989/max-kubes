@@ -29,7 +29,7 @@ spec:
           - type: tablet
             bus: usb
           disks:
-          - name: ubuntu-desktop-24-04-dv
+          - name: ubuntu-desktop-25-04-dv
             cdrom:
               bus: sata
             bootOrder: 2
@@ -53,9 +53,9 @@ spec:
       - name: default
         pod: {}
       volumes:
-      - name: ubuntu-desktop-24-04-dv
+      - name: ubuntu-desktop-25-04-dv
         dataVolume:
-          name: ubuntu-desktop-24-04-dv
+          name: ubuntu-desktop-25-04-dv
       - name: harddisk
         persistentVolumeClaim:
           claimName: uwu-buntu-pvc

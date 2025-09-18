@@ -1,12 +1,12 @@
 apiVersion: cdi.kubevirt.io/v1beta1
 kind: DataVolume
 metadata:
-  name: ubuntu-desktop-24-04-dv
+  name: ubuntu-desktop-25-04-dv
   namespace: virtual-machines
 spec:
   source:
     http:
-      url: "https://mirror.pilotfiber.com/ubuntu-iso/24.04.3/ubuntu-24.04.3-desktop-amd64.iso"
+      url: "https://mirror.pilotfiber.com/ubuntu-iso/25.04/ubuntu-25.04-desktop-amd64.iso"
   pvc:
     accessModes:
       - ReadWriteOnce
