@@ -17,7 +17,7 @@ metadata:
   name: uwu-buntu-vm
   namespace: virtual-machines
 spec:
-  running: true
+  runStrategy: Manual
   template:
     metadata:
       labels:
