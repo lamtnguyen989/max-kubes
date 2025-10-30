@@ -1,5 +1,9 @@
 #!/bin/bash
 
+
+# Delete current version definition
+rm -f *.yaml
+
 # Importing the source link and extract the version
 LINK=$(cat source.txt)
 VERSION=$(echo $LINK | grep -o "v[0-9]\+\.[0-9]\+\.[0-9]\+")
