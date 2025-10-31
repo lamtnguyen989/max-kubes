@@ -4,11 +4,16 @@ metadata:
   name: cdi
 spec:
   config:
-    scratchSpaceStorageClass: local-path
-    podResourceRequirements:
-      requests:
-        cpu: "200m"
-        memory: "100M"
-      limits:
-        cpu: "750m"
-        memory: "2Gi"
+    featureGates:
+    - HonorWaitForFirstConsumer
+    - WebhookPvcRendering
+  imagePullPolicy: IfNotPresent
+  infra:
+    nodeSelector:
+      kubernetes.io/os: linux
+    tolerations:
+    - key: CriticalAddonsOnly
+      operator: Exists
+  workload:
+    nodeSelector:
+      kubernetes.io/os: linux
