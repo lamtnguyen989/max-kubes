@@ -1,0 +1,18 @@
+project: default
+source:
+  repoURL: git@github.com:lamtnguyen989/max-kubes.git
+  path: kubevirt/kubevirt/
+  targetRevision: HEAD
+  directory:
+    recurse: true
+    jsonnet: {}
+destination:
+  server: https://kubernetes.default.svc
+  namespace: kubevirt
+syncPolicy:
+  automated:
+    prune: true
+    selfHeal: true
+    enabled: true
+  syncOptions:
+    - CreateNamespace=true
