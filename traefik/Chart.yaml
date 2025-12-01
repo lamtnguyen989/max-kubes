@@ -16,10 +16,10 @@ spec:
         valueFiles: 
         - $gitPath/traefik/values.yaml
     - repoURL: git@github.com:lamtnguyen989/max-kubes.git
-      path: traefik
       targetRevision: HEAD
       ref: gitPath
   syncPolicy:
     syncOptions:
       - ServerSideApply=true
       - RespectIgnoreDifferences=true
+      - CreateNamespace=true
