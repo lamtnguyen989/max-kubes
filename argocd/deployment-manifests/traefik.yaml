@@ -1,0 +1,24 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: traefik
+  finalizers:
+    - resources-finalizer.argocd.argoproj.io
+spec:
+  destination:
+    namespace: traefik
+    server: https://kubernetes.default.svc
+  source:
+    path: traefik
+    repoURL: git@github.com:lamtnguyen989/max-kubes.git
+    targetRevision: HEAD
+    directory:
+      recurse: true
+  sources: []
+  project: default
+  syncPolicy:
+    automated: null
+    syncOptions:
+      - CreateNamespace=true
+      - ServerSideApply=true
+      - RespectIgnoreDifferences=true
