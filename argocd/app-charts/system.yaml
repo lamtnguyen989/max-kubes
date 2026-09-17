@@ -1,0 +1,18 @@
+project: default
+source:
+  repoURL: git@github.com:lamtnguyen989/max-kubes.git
+  path: System_Services
+  targetRevision: HEAD
+  directory:
+    recurse: true
+destination:
+  server: https://kubernetes.default.svc
+  namespace: system-services
+syncPolicy:
+  automated:
+    prune: true
+    selfHeal: true
+    enabled: true
+  syncOptions:
+    - CreateNamespace=true
+    - ServerSideApply=true
