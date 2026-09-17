@@ -1,0 +1,28 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: cilium
+spec:
+  destination:
+    namespace: kube-system
+    server: https://kubernetes.default.svc
+  sources:
+    - repoURL: https://helm.cilium.io/
+      chart: cilium
+      targetRevision: 1.19.0
+      helm:
+        valueFiles:
+          - $values/cilium/values.yaml
+    - repoURL: git@github.com:lamtnguyen989/max-kubes.git
+      targetRevision: HEAD
+      ref: values
+  project: default
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+      enabled: true
+    syncOptions:
+      - CreateNamespace=true
+      - ServerSideApply=true
+
