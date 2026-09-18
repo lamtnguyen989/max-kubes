@@ -1,10 +1,10 @@
 customization:
     systemExtensions:
         officialExtensions:
+            - siderolabs/intel-npu
             - siderolabs/intel-ucode
             - siderolabs/iscsi-tools
-            - siderolabs/nonfree-kmod-nvidia-lts
             - siderolabs/nvidia-container-toolkit-production
+            - siderolabs/nvidia-open-gpu-kernel-modules-production
             - siderolabs/nvme-cli
             - siderolabs/util-linux-tools
-
