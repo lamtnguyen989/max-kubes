@@ -1,0 +1,8 @@
+customization:
+    systemExtensions:
+        officialExtensions:
+            - siderolabs/intel-ucode
+            - siderolabs/iscsi-tools
+            - siderolabs/nvme-cli
+            - siderolabs/util-linux-tools
+
