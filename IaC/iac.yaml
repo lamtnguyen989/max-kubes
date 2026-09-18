@@ -8,7 +8,7 @@ spec:
   source:
     repoURL: https://github.com/lamtnguyen989/max-kubes.git
     targetRevision: HEAD
-    path: manifests
+    path: IaC/manifests
     directory:
       recurse: true
   destination:
