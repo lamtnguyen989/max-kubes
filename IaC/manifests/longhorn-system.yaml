@@ -18,6 +18,11 @@ spec:
     - repoURL: git@github.com:lamtnguyen989/max-kubes.git
       targetRevision: HEAD
       ref: values
+    - path: longhorn-system
+      repoURL: git@github.com:lamtnguyen989/max-kubes.git
+      targetRevision: HEAD
+      directory:
+        recurse: true
   destination:
     server: https://kubernetes.default.svc
     namespace: longhorn-system
