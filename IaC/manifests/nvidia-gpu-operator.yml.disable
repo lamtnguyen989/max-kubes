@@ -1,0 +1,31 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: cilium
+  namespace: nvidia-gpu-operator
+spec:
+  destination:
+    namespace: kube-system
+    server: https://kubernetes.default.svc
+  sources:
+    - repoURL: https://helm.ngc.nvidia.com/nvidia
+      chart: nvidia
+      targetRevision: 26.7.0
+      helm:
+        valueFiles:
+          - $values/nvidia-operator/values.yaml
+    - repoURL: git@github.com:lamtnguyen989/max-kubes.git
+      targetRevision: HEAD
+      directory:
+        recurse: true
+	include: "*.yaml"
+      ref: values
+  project: default
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+      enabled: true
+    syncOptions:
+      - CreateNamespace=true
+      - ServerSideApply=true
