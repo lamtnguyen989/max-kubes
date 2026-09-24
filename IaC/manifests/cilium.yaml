@@ -12,7 +12,7 @@ spec:
       targetRevision: 1.19.8
       helm:
         valueFiles:
-          - $values/cilium/values.yaml
+          - $values/IaC/cilium/values.yaml
     - repoURL: git@github.com:lamtnguyen989/max-kubes.git
       targetRevision: HEAD
       directory:

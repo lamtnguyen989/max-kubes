@@ -14,7 +14,7 @@ spec:
       targetRevision: v1.12.1 # Replace with the Longhorn version you'd like to install or upgrade to
       helm:
         valueFiles:
-          - $values/longhorn-system/values.yaml
+          - $values/IaC/longhorn-system/values.yaml
     - repoURL: git@github.com:lamtnguyen989/max-kubes.git
       targetRevision: HEAD
       ref: values
