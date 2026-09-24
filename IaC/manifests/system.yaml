@@ -10,7 +10,7 @@ spec:
     namespace: system-services
     server: https://kubernetes.default.svc
   source:
-    path: System_Services
+    path: IaC/System_Services
     repoURL: git@github.com:lamtnguyen989/max-kubes.git
     targetRevision: HEAD
     directory:
