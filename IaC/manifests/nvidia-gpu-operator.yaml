@@ -18,6 +18,7 @@ spec:
       ref: values
     - repoURL: git@github.com:lamtnguyen989/max-kubes.git
       targetRevision: HEAD
+      path: nvidia-operator
       directory:
         recurse: true
       include: "*.yaml"
