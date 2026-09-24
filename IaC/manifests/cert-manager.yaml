@@ -10,6 +10,10 @@ spec:
     path: IaC/cert-manager
     repoURL: git@github.com:lamtnguyen989/max-kubes.git
     targetRevision: HEAD
+    directory:
+      recurse: true
+      include: "*.yaml"
+      exclude: values.yaml
   sources: []
   project: default
   syncPolicy:
