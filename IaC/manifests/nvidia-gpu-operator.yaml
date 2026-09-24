@@ -22,6 +22,7 @@ spec:
       directory:
         recurse: true
         include: "*.yaml"
+        exclude: values.yaml
   project: default
   syncPolicy:
     automated:
