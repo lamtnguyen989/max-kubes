@@ -18,7 +18,7 @@ spec:
     - repoURL: git@github.com:lamtnguyen989/max-kubes.git
       targetRevision: HEAD
       ref: values
-    - path: longhorn-system
+    - path: IaC/longhorn-system
       repoURL: git@github.com:lamtnguyen989/max-kubes.git
       targetRevision: HEAD
       directory:
