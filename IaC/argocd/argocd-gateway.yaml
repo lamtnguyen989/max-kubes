@@ -1,0 +1,19 @@
+apiVersion: gateway.networking.k8s.io/v1
+kind: Gateway
+metadata:
+  name: argocd-gateway
+  namespace: argocd
+spec:
+  gatewayClassName: cilium
+  listeners:
+    - name: https
+      protocol: HTTPS
+      port: 443
+      hostname: argocd.max-kubes.com
+      tls:
+        mode: Passthrough
+        certificateRefs:
+          - name: argocd-tls-secret
+      allowedRoutes: 
+      namespaces:
+        from: Same

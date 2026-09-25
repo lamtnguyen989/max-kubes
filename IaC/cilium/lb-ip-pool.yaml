@@ -1,0 +1,14 @@
+apiVersion: cilium.io/v2
+kind: CiliumLoadBalancerIPPool
+metadata:
+  name: cilium-pool
+spec:
+  blocks:
+    - cidr: 192.168.2.170/28
+---
+apiVersion: cilium.io/v2
+kind: CiliumL2AnnouncementPolicy
+metadata:
+  name: default-l2-policy
+spec:
+  loadBalancerIPs: true
