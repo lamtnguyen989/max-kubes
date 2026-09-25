@@ -1,0 +1,30 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: argocd
+spec:
+  destination:
+    namespace: argocd
+    server: https://kubernetes.default.svc
+  sources:
+    - repoURL: https://argoproj.github.io/argo-helm
+      chart: argo-cd
+      targetRevision: 3.5.3
+      helm:
+        valueFiles: 
+          - $values/IaC/argocd/values.yaml
+    - path: IaC/argocd
+      repoURL: git@github.com:lamtnguyen989/max-kubes.git
+      targetRevision: HEAD
+      directory:
+        recurse: true
+        include: '"*.yaml"'
+        exclude: values.yaml
+    - repoURL: git@github.com:lamtnguyen989/max-kubes.git
+      targetRevision: HEAD
+      ref: values
+  project: default
+  syncPolicy:
+    syncOptions:
+      - CreateNamespace=true
+      - ServerSideApply=true
