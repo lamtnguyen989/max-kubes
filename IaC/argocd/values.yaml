@@ -3,3 +3,6 @@ configs:
   params:
     server:
       insecure: false
+server:
+  certificate:
+    secretName: argocd-server-tls
