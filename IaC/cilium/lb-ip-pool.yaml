@@ -13,3 +13,9 @@ metadata:
   name: default-l2-policy
 spec:
   loadBalancerIPs: true
+  nodeSelector:
+    matchExpressions:
+      - key: kubernetes.io/hostname
+        operator: In
+        values:
+          - kubes-worker-1
