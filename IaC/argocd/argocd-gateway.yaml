@@ -6,14 +6,12 @@ metadata:
 spec:
   gatewayClassName: cilium
   listeners:
-    - name: https
-      protocol: HTTPS
+    - name: tls-passthrough
+      protocol: TLS
       port: 443
       hostname: argocd.max-kubes.com
       tls:
         mode: Passthrough
-        certificateRefs:
-          - name: argocd-tls-secret
       allowedRoutes: 
       namespaces:
         from: Same
