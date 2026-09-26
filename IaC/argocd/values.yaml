@@ -5,4 +5,4 @@ configs:
       insecure: false
 server:
   certificate:
-    secretName: argocd-server-tls
+    secretName: argocd-tls-secret
