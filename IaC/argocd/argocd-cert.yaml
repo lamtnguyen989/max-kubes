@@ -5,7 +5,7 @@ metadata:
   namespace: argocd
 spec:
   secretName: argocd-tls-secret
-  dnsNames: argocd.max-kubes.com
+  dnsNames: "argocd.max-kubes.com"
   issuerRef:
     name: max-kubes-ca-issuer
     kind: ClusterIssuer
