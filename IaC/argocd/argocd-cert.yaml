@@ -4,7 +4,7 @@ metadata:
   name: argocd-tls
   namespace: argocd
 spec:
-  secretName: argocd-tls-secret
+  secretName: argocd-server-tls
   dnsNames: 
     - "argocd.max-kubes.com"
   issuerRef:
