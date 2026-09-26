@@ -18,7 +18,7 @@ spec:
       targetRevision: HEAD
       directory:
         recurse: true
-        include: '"*.yaml"'
+        include: "*.yaml"
         exclude: values.yaml
     - repoURL: git@github.com:lamtnguyen989/max-kubes.git
       targetRevision: HEAD
