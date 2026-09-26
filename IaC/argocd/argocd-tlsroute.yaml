@@ -7,9 +7,9 @@ spec:
   parentRefs:
     - name: argocd-gateway
       sectionName: tls-passthrough
-    hostnames:
-      - "argocd.max-kubes.com"
-    rules:
-      - backendRefs:
-        - name: argocd-server
-          port: 443
+  hostnames:
+    - "argocd.max-kubes.com"
+  rules:
+    - backendRefs:
+      - name: argocd-server
+        port: 443

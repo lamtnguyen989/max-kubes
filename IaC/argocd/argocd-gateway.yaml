@@ -13,5 +13,5 @@ spec:
       tls:
         mode: Passthrough
       allowedRoutes: 
-      namespaces:
-        from: Same
+        namespaces:
+          from: Same
