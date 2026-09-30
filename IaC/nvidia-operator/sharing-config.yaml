@@ -4,18 +4,17 @@ metadata:
   name: time-slicing-config
   namespace: nvidia-gpu-operator
 data: 
-  single: |-
+  fullGPU: |-
     version: v1
     flags:
       migStrategy: none 
-  ts-2: |-
+  mps-2: |-
     version: v1
     flags:
       migStrategy: none
     sharing:
-      timeSlicing:
+      mps:
         renameByDefault: false
-        failRequestsGreaterThanOne: false
         resources:
           - name: nvidia.com/gpu
             replicas: 2
