@@ -1,4 +1,0 @@
-apiVersion: v1alpha1
-kind: KubeNodeConfig
-labels:
-  nvidia.com/device-plugin.config: mps-profile
