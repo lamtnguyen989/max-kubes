@@ -9,4 +9,4 @@ hostPaths:
 devicePlugin:
   config:
     name: time-slicing-config
-    default: ts-4
+    default: mps-4
