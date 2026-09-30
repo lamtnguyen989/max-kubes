@@ -8,5 +8,5 @@ hostPaths:
 
 devicePlugin:
   config:
-    name: time-slicing-config
+    name: sharing-config
     default: mps-4
