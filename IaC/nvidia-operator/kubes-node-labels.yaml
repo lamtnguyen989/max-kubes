@@ -6,3 +6,4 @@ metadata:
     nvidia.com/mps.capable: "true"
     nvidia.com/device-plugin.config: "mps-4"
     nvidia.com/gpu.sharing-strategy: "mps"
+    nvidia.com/gpu.deploy.mps-control-daemon: "true"
