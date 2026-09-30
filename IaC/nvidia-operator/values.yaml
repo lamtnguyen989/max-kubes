@@ -9,4 +9,4 @@ hostPaths:
 devicePlugin:
   config:
     name: sharing-config
-    default: mps-4
+    default: ts-4

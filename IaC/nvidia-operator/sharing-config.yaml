@@ -28,6 +28,17 @@ data:
         resources:
           - name: nvidia.com/gpu
             replicas: 4
+   ts-4: |-
+    version: v1
+    flags:
+      migStrategy: none
+    sharing:
+      timeSlicing:
+        renameByDefault: false
+        failRequestsGreaterThanOne: false
+        resources:
+          - name: nvidia.com/gpu
+            replicas: 4
   ts-8: |-
     version: v1
     flags:
