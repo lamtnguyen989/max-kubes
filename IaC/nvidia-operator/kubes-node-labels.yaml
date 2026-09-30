@@ -5,3 +5,4 @@ metadata:
   labels:
     nvidia.com/mps.capable: "true"
     nvidia.com/device-plugin.config: "ts-4"
+    nvidia.com/gpu.sharing-strategy: "mps"
