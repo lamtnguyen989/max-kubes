@@ -3,7 +3,7 @@ kind: Node
 metadata:
   name: kubes-worker-1
   labels:
-    nvidia.com/mps.capable: "true"
+    nvidia.com/mps.capable: "false"
     nvidia.com/device-plugin.config: "ts-4"
     #nvidia.com/gpu.sharing-strategy: "mps"
     #nvidia.com/gpu.deploy.mps-control-daemon: "true"
