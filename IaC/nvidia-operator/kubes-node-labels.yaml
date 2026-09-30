@@ -4,5 +4,5 @@ metadata:
   name: kubes-worker-1
   labels:
     nvidia.com/mps.capable: "true"
-    nvidia.com/device-plugin.config: "ts-4"
+    nvidia.com/device-plugin.config: "mps-4"
     nvidia.com/gpu.sharing-strategy: "mps"
