@@ -1,0 +1,34 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: prometheus
+spec:
+  destination:
+    namespace: prometheus
+    server: https://kubernetes.default.svc
+  sources:
+    - repoURL: https://prometheus-community.github.io/helm-charts
+      chart: kube-prometheus-stack
+      targetRevision: 91.9.0
+      helm:
+        valueFiles:
+          - $values/IaC/prometheus/values.yaml
+    - repoURL: git@github.com:lamtnguyen989/max-kubes.git
+      path: IaC/prometheus
+      targetRevision: HEAD
+      directory:
+        recurse: true
+        include: "*.yaml"
+        exclude: values.yaml
+    - repoURL: git@github.com:lamtnguyen989/max-kubes.git
+      targetRevision: HEAD
+      ref: values
+  project: default
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+      enabled: true
+    syncOptions:
+      - CreateNamespace=true
+
