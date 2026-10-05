@@ -25,6 +25,8 @@ grafana:
   "grafana.ini":
     server:
       protocol: https
+      domain: grafana.max-kubes.com
+      root_url: "https://grafana.max-kubes.com/"
       cert_file: /etc/grafana/tls/tls.crt
       cert_key: /etc/grafana/tls/tls.key
   extraSecretMounts:
