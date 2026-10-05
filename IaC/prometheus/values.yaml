@@ -42,3 +42,6 @@ grafana:
       path: /api/health
       port: 3000
       scheme: HTTPS
+  service:
+    port: 443
+    targetPort: 3000
