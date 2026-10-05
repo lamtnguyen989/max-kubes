@@ -1,0 +1,46 @@
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: grafana-tls
+  namespace: prometheus
+spec:
+  secretName: grafana-dashboard-tls
+  dnsNames:
+    - "grafana.max-kubes.com"
+  issuerRef:
+    name: max-kubes-ca-issuer
+    kind: ClusterIssuer
+---
+apiVersion: gateway.networking.k8s.io/v1
+kind: Gateway
+metadata:
+  name: grafana-gateway
+  namespace: prometheus
+spec:
+  gatewayClassName: cilium
+  listeners:
+    - name: tls-passthrough
+      protocol: TLS
+      port: 443
+      hostname: grafana.max-kubes.com
+      tls:
+        mode: Passthrough
+      allowedRoutes:
+        namespaces:
+          from: Same
+---
+apiVersion: gateway.networking.k8s.io/v1
+kind: TLSRoute
+metadata:
+  name: grafana-dashboard
+  namespace: prometheus
+spec:
+  parentRefs:
+    - name: grafana-gateway
+      sectionName: tls-passthrough
+  hostnames:
+    - "grafana.max-kubes.com"
+  rules:
+    - backendRefs:
+      - name: prometheus-grafana 
+        port: 443
