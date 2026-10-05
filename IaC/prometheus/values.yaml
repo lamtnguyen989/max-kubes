@@ -21,3 +21,14 @@ alertmanager:
           resources:
             requests:
               storage: 5Gi
+grafana:
+  "grafana.ini":
+    server:
+      protocol: https
+      cert_file: /etc/grafana/tls/tls.crt
+      cert_key: /etc/grafana/tls/tls.key
+    extraSecretMounts:
+      - name: grafana-tls
+        secretName: grafana-dashboard-tls
+        mountPath: /etc/grafana/tls
+        readOnly: true
