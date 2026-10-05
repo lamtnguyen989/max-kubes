@@ -45,3 +45,11 @@ grafana:
   service:
     port: 443
     targetPort: 3000
+  serviceMonitor:
+    enabled: true
+    scheme: https
+    tlsConfig:
+      ca:
+        secret:
+          name: max-kubes-ca-secret
+          key: ca.crt
