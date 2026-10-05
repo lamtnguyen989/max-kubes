@@ -32,3 +32,13 @@ grafana:
       secretName: grafana-dashboard-tls
       mountPath: /etc/grafana/tls
       readOnly: true
+  livenessProbe:
+    httpGet:
+      path: /api/health
+      port: 3000
+      scheme: HTTPS
+  readinessProbe:
+    httpGet:
+      path: /api/health
+      port: 3000
+      scheme: HTTPS
