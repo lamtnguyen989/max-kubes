@@ -5,11 +5,16 @@ metadata:
   namespace: argocd
 spec:
   parentRefs:
-    - name: argocd-gateway
+    - group: gateway.networking.k8s.io	
+      kind: Gateway
+      name: argocd-gateway
       sectionName: tls-passthrough
   hostnames:
     - "argocd.max-kubes.com"
   rules:
     - backendRefs:
-      - name: argocd-server
+      - group: ''
+        kind: Service
+        name: argocd-server
         port: 443
+        weight: 1
