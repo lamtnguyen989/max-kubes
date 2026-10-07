@@ -48,3 +48,4 @@ spec:
           kind: Service
           name: prometheus-grafana 
           port: 443
+          weight: 1
