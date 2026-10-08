@@ -1,0 +1,33 @@
+apiVersion: argoproj.io/v1alpha1
+kind: ApplicationSet
+metadata:
+  name: intel-device-plugins
+  namespace: argocd
+spec:
+  goTemplate: true
+  goTemplateOptions: ["missingkey=error"]
+  generators:
+    - git:
+        repoURL: git@github.com:lamtnguyen989/max-kubes.git
+        revision: HEAD
+        files: 
+          - path: IaC/intel-device-plugins/charts-and-values.yaml
+  template:
+    metadata:
+      name: "{{ .chart }}"
+    spec:
+      repoURL: https://intel.github.io/helm-charts
+      chart: "{{ .chart }}"
+      targetRevision: 0.37.1
+      helm: 
+        releaseName: "{{ .chart }}"
+        values: "{{ .values | toJson }}"
+      project: default
+      syncPolicy:
+        automated:
+          prune: true
+          selfHeal: true
+          enabled: true
+        syncOptions:
+          - CreateNamespace=true
+          - ServerSideApply=true
