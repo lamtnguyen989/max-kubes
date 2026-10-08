@@ -1,0 +1,34 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: jellyfin
+  namespace: argocd
+spec:
+  destination:
+    namespace: jellyfin
+    server: https://kubernetes.default.svc
+  sources:
+    - repoURL: https://jellyfin.github.io/jellyfin-helm
+      chart: 
+      targetRevision: 3.2.0
+      helm:
+        valueFiles:
+          - $values/Services/jellyfin/values.yaml
+    - repoURL: git@github.com:lamtnguyen989/max-kubes.git
+      targetRevision: HEAD
+      ref: values
+    - repoURL: git@github.com:lamtnguyen989/max-kubes.git
+      targetRevision: HEAD
+      path: Services/jellyfin
+      directory:
+        recurse: true
+        include: "*.yaml"
+        exclude: values.yaml
+  project: default
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+      enabled: true
+    syncOptions:
+      - CreateNamespace=true
