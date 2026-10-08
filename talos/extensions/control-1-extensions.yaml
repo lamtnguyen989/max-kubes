@@ -1,8 +1,9 @@
 customization:
     systemExtensions:
         officialExtensions:
+            - siderolabs/i915
+            - siderolabs/intel-npu
             - siderolabs/intel-ucode
             - siderolabs/iscsi-tools
             - siderolabs/nvme-cli
             - siderolabs/util-linux-tools
-
