@@ -1,0 +1,35 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: intel-device-plugins
+  namespace: argocd
+spec:
+  destination:
+    namespace: nvidia-gpu-operator
+    server: https://kubernetes.default.svc
+  sources:
+    - repoURL: https://intel.github.io/helm-charts 
+      chart: intel-device-plugins
+      targetRevision: 0.37.1
+      helm:
+        valueFiles:
+          - $values/IaC/nvidia-operator/values.yaml
+    - repoURL: git@github.com:lamtnguyen989/max-kubes.git
+      targetRevision: HEAD
+      ref: values
+    - repoURL: git@github.com:lamtnguyen989/max-kubes.git
+      targetRevision: HEAD
+      path: IaC/intel-device-plugins
+      directory:
+        recurse: true
+        include: "*.yaml"
+        exclude: values.yaml
+  project: default
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+      enabled: true
+    syncOptions:
+      - CreateNamespace=true
+      - ServerSideApply=true
