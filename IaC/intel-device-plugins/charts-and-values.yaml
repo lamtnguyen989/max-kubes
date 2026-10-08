@@ -1,12 +1,12 @@
 - chart: intel-device-plugins-operator
-    values:
-      manager:
-        devices:
-          dsa: true
-          gpu: true
-          iaa: true
-          qat: true
-          sgx: true
+  values:
+    manager:
+      devices:
+        dsa: true
+        gpu: true
+        iaa: true
+        qat: true
+        sgx: true
 
 - chart: intel-device-plugins-gpu
   values:
