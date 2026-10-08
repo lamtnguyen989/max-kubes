@@ -1,47 +1,33 @@
 apiVersion: argoproj.io/v1alpha1
-kind: Application
+kind: ApplicationSet
 metadata:
-  name: intel-device-operator
+  name: intel-device-plugins
   namespace: argocd
 spec:
-  destination:
-    namespace: inteldeviceplugins-system
-    server: https://kubernetes.default.svc
-  sources:
-    - repoURL: https://intel.github.io/helm-charts 
-      chart: intel-device-plugins-operator
+  goTemplate: true
+  goTemplateOptions: ["missingkey=error"]
+  generators:
+    - git:
+        repoURL: git@github.com:lamtnguyen989/max-kubes.git
+        revision: HEAD
+        files: 
+          - path: IaC/intel-device-plugins/charts-and-values.yaml
+  template:
+    metadata:
+      name: "{{ .chart }}"
+    spec:
+      repoURL: https://intel.github.io/helm-charts
+      chart: "{{ .chart }}"
       targetRevision: 0.37.1
-      helm:
-        valueFiles:
-          - $values/IaC/intel-device-operator/values.yaml
-    - repoURL: https://intel.github.io/helm-charts 
-      chart: intel-device-plugins-gpu
-      targetRevision: 0.37.1
-      helm:
-        valueFiles:
-          - $values/IaC/intel-device-operator/values.yaml
-    - repoURL: https://intel.github.io/helm-charts 
-      chart: intel-device-plugins-npu
-      targetRevision: 0.37.1
-      helm:
-        valueFiles:
-          - $values/IaC/intel-device-operator/values.yaml
-    - repoURL: git@github.com:lamtnguyen989/max-kubes.git
-      targetRevision: HEAD
-      ref: values
-    - repoURL: git@github.com:lamtnguyen989/max-kubes.git
-      targetRevision: HEAD
-      path: IaC/intel-device-operator
-      directory:
-        recurse: true
-        include: "*.yaml"
-        exclude: "values.yaml"
-  project: default
-  syncPolicy:
-    automated:
-      prune: true
-      selfHeal: true
-      enabled: true
-    syncOptions:
-      - CreateNamespace=true
-      - ServerSideApply=true
+      helm: 
+        releaseName: "{{ .chart }}"
+        values: "{{ .values | toJson }}"
+      project: default
+      syncPolicy:
+        automated:
+          prune: true
+          selfHeal: true
+          enabled: true
+        syncOptions:
+          - CreateNamespace=true
+          - ServerSideApply=true

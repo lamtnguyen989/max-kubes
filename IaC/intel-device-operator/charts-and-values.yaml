@@ -1,0 +1,22 @@
+- chart: intel-device-plugins-operator
+    values:
+      manager:
+        devices:
+          dsa: true
+          gpu: true
+          iaa: true
+          qat: true
+          sgx: true
+
+- chart: intel-device-plugins-gpu
+  values:
+    nodeSelector:
+      intel.feature.node.kubernetes.io/gpu: "true"
+- chart: intel-device-plugins-npu
+  values: 
+    nodeSelector:
+      intel.feature.node.kubernetes.io/npu: "true"
+- chart: intel-device-plugins-qat
+  values: 
+    nodeSelector:
+      intel.feature.node.kubernetes.io/qat: "true"
