@@ -16,12 +16,16 @@ spec:
     metadata:
       name: "{{ .chart }}"
     spec:
-      repoURL: https://intel.github.io/helm-charts
-      chart: "{{ .chart }}"
-      targetRevision: 0.37.1
-      helm: 
-        releaseName: "{{ .chart }}"
-        values: "{{ .values | toJson }}"
+      source:
+        repoURL: https://intel.github.io/helm-charts
+        chart: "{{ .chart }}"
+        targetRevision: 0.37.1
+        helm: 
+          releaseName: "{{ .chart }}"
+          values: "{{ .values | toJson }}"
+      destination:
+        server: https://kubernetes.default.svc
+        namespace: intel-device-plugins
       project: default
       syncPolicy:
         automated:
