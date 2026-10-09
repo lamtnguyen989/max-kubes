@@ -17,7 +17,6 @@
   values: 
     nodeSelector:
       intel.feature.node.kubernetes.io/npu: "true"
-      sharedDevNum: "4"
 - chart: intel-device-plugins-qat
   values: 
     nodeSelector:
