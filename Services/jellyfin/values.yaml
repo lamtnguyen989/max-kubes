@@ -1,5 +1,33 @@
+# PVC claims
+persistence:
+  config:
+    enabled: true
+    size: 5Gi
+    storageClass: "longhorn"
+  media:
+    enabled: true
+    size: 100Gi
+    storageClass: "longhorn"
+
+# Metrics 
 metrics:
   enabled: true
   serviceMonitor:
     enabled: true
 
+# Hardware acceleration
+securityContext:
+  privileged: true
+
+resources:
+  limits:
+    gpu.intel.com/i915: 1
+
+volumes:
+  - name: dri
+    hostPath:
+      path: /dev/dri
+
+volumeMounts:
+  - name: dri
+    mountPath: /dev/dri
