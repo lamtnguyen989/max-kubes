@@ -22,3 +22,7 @@
   values: 
     nodeSelector:
       intel.feature.node.kubernetes.io/qat: "true"
+- chart: intel-device-plugins-dsa
+  values: 
+    nodeSelector:
+      intel.feature.node.kubernetes.io/dsa: "true"
