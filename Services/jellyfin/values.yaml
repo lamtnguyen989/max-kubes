@@ -16,18 +16,18 @@ metrics:
     enabled: true
 
 # Hardware acceleration
-# securityContext:
-#   privileged: true
+securityContext:
+  privileged: true
 
-# resources:
-#   limits:
-#     gpu.intel.com/i915: 1
+resources:
+  limits:
+    gpu.intel.com/i915: 1
 
-# volumes:
-#   - name: dri
-#     hostPath:
-#       path: /dev/dri
+volumes:
+  - name: dri
+    hostPath:
+      path: /dev/dri
 
-# volumeMounts:
-#   - name: dri
-#     mountPath: /dev/dri
+volumeMounts:
+  - name: dri
+    mountPath: /dev/dri
