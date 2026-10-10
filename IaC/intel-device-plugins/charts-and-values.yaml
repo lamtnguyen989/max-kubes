@@ -13,7 +13,6 @@
   values:
     nodeSelector:
       intel.feature.node.kubernetes.io/gpu: "true"
-    sharedDevNum: "4"
 - chart: intel-device-plugins-npu
   values: 
     nodeSelector:
