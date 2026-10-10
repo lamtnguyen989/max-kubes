@@ -7,6 +7,7 @@
         iaa: true
         qat: true
         sgx: true
+        npu: true
 
 - chart: intel-device-plugins-gpu
   values:
