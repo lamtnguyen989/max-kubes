@@ -23,11 +23,3 @@ resources:
   limits:
     gpu.intel.com/i915: 1
 
-volumes:
-  - name: dri
-    hostPath:
-      path: /dev/dri
-
-volumeMounts:
-  - name: dri
-    mountPath: /dev/dri
