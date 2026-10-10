@@ -2,9 +2,9 @@
   values:
     manager:
       devices:
-        dsa: true
+        dsa: false
         gpu: true
-        iaa: true
+        iaa: false
         qat: true
         sgx: true
         npu: true
@@ -22,7 +22,4 @@
   values: 
     nodeSelector:
       intel.feature.node.kubernetes.io/qat: "true"
-- chart: intel-device-plugins-dsa
-  values: 
-    nodeSelector:
-      intel.feature.node.kubernetes.io/dsa: "true"
+
