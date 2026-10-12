@@ -15,19 +15,20 @@ metrics:
   serviceMonitor:
     enabled: true
 
+extraEnvVars:
+- name: JELLYFIN_PublishedServerUrl
+  value: 'https://jellyfin.max-kubes.com'
+
 # Hardware acceleration
 # securityContext:
 #   privileged: true
-
 # resources:
 #   limits:
 #     gpu.intel.com/i915: 1
-
 # volumes:
 #   - name: dri
 #     hostPath:
 #       path: /dev/dri
-
 # volumeMounts:
 #   - name: dri
 #     mountPath: /dev/dri

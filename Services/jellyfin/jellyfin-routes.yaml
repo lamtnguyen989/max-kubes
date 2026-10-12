@@ -1,0 +1,58 @@
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: jellyfin-tls
+  namespace: jellyfin
+spec:
+  secretName: jellyfin-tls
+  dnsNames:
+    - "jellyfin.max-kubes.com"
+  issuerRef:
+    name: max-kubes-ca-issuer
+    kind: ClusterIssuer
+---
+apiVersion: gateway.networking.k8s.io/v1
+kind: Gateway
+metadata:
+  name: jellyfin-gateway
+  namespace: jellyfin
+spec:
+  gatewayClassName: cilium
+  listeners:
+    - name: https
+      protocol: HTTPS
+      port: 443
+      hostname: jellyfin.max-kubes.com
+      tls:
+        mode: Terminate
+        certificateRefs: 
+          - kind: Secret
+            name: jellyfin-tls
+      allowedRoutes:
+        namespaces:
+          from: Same
+---
+apiVersion: gateway.networking.k8s.io/v1
+kind: HTTPRoute
+metadata:
+  name: jellyfin-dashboard
+  namespace: jellyfin
+spec:
+  parentRefs:
+    - group: gateway.networking.k8s.io	
+      kind: Gateway
+      name: jellyfin-gateway
+      sectionName: https
+  hostnames:
+    - "jellyfin.max-kubes.com"
+  rules:
+    - matches:
+        - path:
+            type: PathPrefix
+            value: /
+      backendRefs:
+        - kind: Service
+          group: ''	
+          name: jellyfin
+          port: 8096
+          weight: 1
