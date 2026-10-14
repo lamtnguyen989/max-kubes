@@ -9,7 +9,3 @@ terraform {
   }
 }
 
-provider "kubernetes" {
-  config_path = "~/k8s/kubeconfig"
-  config_context = null
-}
