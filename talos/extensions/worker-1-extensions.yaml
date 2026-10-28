@@ -1,7 +1,6 @@
 customization:
     systemExtensions:
         officialExtensions:
-            - siderolabs/i915
             - siderolabs/intel-npu
             - siderolabs/intel-ucode
             - siderolabs/iscsi-tools
@@ -9,3 +8,4 @@ customization:
             - siderolabs/nvidia-open-gpu-kernel-modules-production
             - siderolabs/nvme-cli
             - siderolabs/util-linux-tools
+            - siderolabs/xe
