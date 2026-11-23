@@ -1,0 +1,35 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: cloudnative-pg
+  namespace: argocd
+spec:
+  destination:
+    namespace: cloudnative-pg
+    server: https://kubernetes.default.svc
+  sources:
+    - repoURL: https://cloudnative-pg.io/charts/
+      chart: cloudnative-pg 
+      targetRevision: 0.29.2
+      helm:
+        valueFiles:
+          - $values/IaC/cloudnative-pg/values.yaml
+    - repoURL: git@github.com:lamtnguyen989/max-kubes.git
+      path: IaC/cloudnative-pg
+      targetRevision: HEAD
+      directory:
+        recurse: true
+        include: "*.yaml"
+        exclude: values.yaml
+    - repoURL: git@github.com:lamtnguyen989/max-kubes.git
+      targetRevision: HEAD
+      ref: values
+  project: default
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+      enabled: true
+    syncOptions:
+      - CreateNamespace=true
+      - ServerSideApply=true
