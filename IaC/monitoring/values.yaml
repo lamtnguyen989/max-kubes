@@ -53,5 +53,5 @@ grafana:
     tlsConfig:
       ca:
         secret:
-          name: max-kubes-ca-secret
+          name: grafana-dashboard-tls
           key: ca.crt
