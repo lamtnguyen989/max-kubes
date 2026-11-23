@@ -46,6 +46,6 @@ spec:
     - backendRefs:
         - group: ''	
           kind: Service
-          name: prometheus-grafana 
+          name: monitoring-grafana 
           port: 443
           weight: 1
