@@ -15,7 +15,7 @@ spec:
         valueFiles:
           - $values/IaC/monitoring/values.yaml
     - repoURL: git@github.com:lamtnguyen989/max-kubes.git
-      path: IaC/prometheus
+      path: IaC/monitoring
       targetRevision: HEAD
       directory:
         recurse: true
