@@ -55,3 +55,4 @@ grafana:
         secret:
           name: grafana-dashboard-tls
           key: ca.crt
+      serverName: grafana.max-kubes.com
