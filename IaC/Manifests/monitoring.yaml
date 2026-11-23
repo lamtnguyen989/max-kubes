@@ -1,11 +1,11 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: prometheus
+  name: monitoring
   namespace: argocd
 spec:
   destination:
-    namespace: prometheus
+    namespace: monitoring
     server: https://kubernetes.default.svc
   sources:
     - repoURL: https://prometheus-community.github.io/helm-charts
@@ -13,7 +13,7 @@ spec:
       targetRevision: 91.9.0
       helm:
         valueFiles:
-          - $values/IaC/prometheus/values.yaml
+          - $values/IaC/monitoring/values.yaml
     - repoURL: git@github.com:lamtnguyen989/max-kubes.git
       path: IaC/prometheus
       targetRevision: HEAD
@@ -33,4 +33,10 @@ spec:
     syncOptions:
       - CreateNamespace=true
       - ServerSideApply=true
-
+    managedNamespaceMetadata:
+      pod-security.kubernetes.io/enforce: privileged
+      pod-security.kubernetes.io/enforce-version: latest
+      pod-security.kubernetes.io/audit: privileged
+      pod-security.kubernetes.io/audit-version: latest
+      pod-security.kubernetes.io/warn: privileged
+      pod-security.kubernetes.io/warn-version: latest
