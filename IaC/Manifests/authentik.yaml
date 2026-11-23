@@ -1,0 +1,35 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: authentik
+  namespace: argocd
+spec:
+  destination:
+    namespace: authentik
+    server: https://kubernetes.default.svc
+  sources:
+    - repoURL: https://charts.goauthentik.io/
+      chart: authentik
+      targetRevision: 2026.8.6
+      helm:
+        valueFiles:
+          - $values/IaC/cloudnative-pg/values.yaml
+    - repoURL: git@github.com:lamtnguyen989/max-kubes.git
+      path: IaC/authentik
+      targetRevision: HEAD
+      directory:
+        recurse: true
+        include: "*.yaml"
+        exclude: values.yaml
+    - repoURL: git@github.com:lamtnguyen989/max-kubes.git
+      targetRevision: HEAD
+      ref: values
+  project: default
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+      enabled: true
+    syncOptions:
+      - CreateNamespace=true
+      - ServerSideApply=true
