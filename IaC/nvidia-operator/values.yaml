@@ -10,3 +10,6 @@ devicePlugin:
   config:
     name: sharing-config
     default: ts-4
+
+nfd:
+  enabled: false
