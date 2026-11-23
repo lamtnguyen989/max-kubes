@@ -2,7 +2,7 @@ apiVersion: cert-manager.io/v1
 kind: Certificate
 metadata:
   name: grafana-tls
-  namespace: prometheus
+  namespace: monitoring
 spec:
   secretName: grafana-dashboard-tls
   dnsNames:
@@ -15,7 +15,7 @@ apiVersion: gateway.networking.k8s.io/v1
 kind: Gateway
 metadata:
   name: grafana-gateway
-  namespace: prometheus
+  namespace: monitoring
 spec:
   gatewayClassName: cilium
   listeners:
@@ -33,7 +33,7 @@ apiVersion: gateway.networking.k8s.io/v1
 kind: TLSRoute
 metadata:
   name: grafana-dashboard
-  namespace: prometheus
+  namespace: monitoring
 spec:
   parentRefs:
     - group: gateway.networking.k8s.io	
